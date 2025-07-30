@@ -1,3 +1,122 @@
-[gd_scene format=3 uid="uid://2hfvif0udh5a"]
+[gd_scene load_steps=3 format=3 uid="uid://2hfvif0udh5a"]
 
-[node name="Level1" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="1_24phs"]
+[ext_resource type="Script" uid="uid://b60q4iis2reg8" path="res://Scripts/level_2.gd" id="1_ty1rc"]
+
+[node name="Level2" type="Control" node_paths=PackedStringArray("captcha_ui", "captcha_button_container", "captcha_button", "captcha_label", "captcha_grid", "loading_bar", "loading_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ty1rc")
+captcha_ui = NodePath("Captcha")
+captcha_button_container = NodePath("CaptchaButtonContainer")
+captcha_button = NodePath("CaptchaButtonContainer/CaptchaButton")
+captcha_label = NodePath("Captcha/VBoxContainer/Label")
+captcha_grid = NodePath("Captcha/VBoxContainer/GridContainer")
+loading_bar = NodePath("BarContainer/ProgressBar")
+loading_label = NodePath("BarContainer/Label")
+
+[node name="CaptchaButtonContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.5
+offset_top = -29.0
+offset_right = 154.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CaptchaButtonContainer"]
+layout_mode = 2
+text = "Please complete a CAPTCHA to continue"
+
+[node name="CaptchaButton" type="Button" parent="CaptchaButtonContainer"]
+layout_mode = 2
+text = "I'm not a robot"
+
+[node name="Captcha" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Captcha"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Captcha/VBoxContainer"]
+layout_mode = 2
+text = "Select all pictures with a car"
+
+[node name="GridContainer" type="GridContainer" parent="Captcha/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton2" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton3" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton4" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton5" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton6" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton7" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton8" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="TextureButton9" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_24phs")
+
+[node name="Button" type="Button" parent="Captcha/VBoxContainer"]
+layout_mode = 2
+text = "Verify"
+
+[node name="BarContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="BarContainer"]
+layout_mode = 2
+text = "Downloading more RAM..."
+
+[node name="ProgressBar" type="ProgressBar" parent="BarContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="CaptchaButtonContainer/CaptchaButton" to="." method="_on_captcha_button_pressed"]
+[connection signal="pressed" from="Captcha/VBoxContainer/Button" to="." method="_on_verify_pressed"]
