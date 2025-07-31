@@ -64,7 +64,7 @@ func complete_loading():
 	while loading_bar.value < 100:
 		loading_bar.value += 1
 		await get_tree().create_timer(0.03).timeout
-	# Go to next level, or show crash
+	TransitionManager.transition_to("res://Levels/level3.tscn")
 
 func _on_captcha_button_pressed() -> void:
 	captcha_ui.visible = true

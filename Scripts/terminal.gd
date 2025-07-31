@@ -25,7 +25,7 @@ func _on_command_entered(command: String):
 			loading_bar.value = 100
 			history.text += "\nResuming loading sequence..."
 			await get_tree().create_timer(1.0).timeout
-			# Emit signal or change scene
+			TransitionManager.transition_to("res://Levels/Level4/level4.tscn")
 		"help":
 			history.text += "\nAvailable commands:\n - status\n - launch_missiles\n - make_coffee\n - reboot\n - help\n - clear"
 		"status":
