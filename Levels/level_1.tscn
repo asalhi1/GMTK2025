@@ -1,46 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://rfqb6ljnld0e"]
+[gd_scene load_steps=4 format=3 uid="uid://rfqb6ljnld0e"]
 
 [ext_resource type="Script" uid="uid://ednc5a24ev5e" path="res://Scripts/level_1.gd" id="1_3mhv4"]
-[ext_resource type="Script" uid="uid://jq00golbakyn" path="res://Scripts/player.gd" id="2_rf6l5"]
 [ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="3_syshm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfktq"]
-size = Vector2(134, 129)
+[sub_resource type="SpriteFrames" id="SpriteFrames_dilhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_syshm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urlm"]
-size = Vector2(666, 69)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77x7w"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoyoh"]
-bg_color = Color(0.0833298, 0.726508, 0, 1)
-
-[node name="Level1" type="Node2D"]
-position = Vector2(38, 9)
+[node name="Level1" type="Control" node_paths=PackedStringArray("player", "progress_bar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3mhv4")
+player = NodePath("MarginContainer/AnimatedSprite2D")
+progress_bar = NodePath("MarginContainer/BarContainer/ProgressBar")
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(-198, 9)
-script = ExtResource("2_rf6l5")
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(529, 233)
-texture = ExtResource("3_syshm")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
+position = Vector2(65, 528)
+sprite_frames = SubResource("SpriteFrames_dilhk")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(529, 230.5)
-shape = SubResource("RectangleShape2D_rfktq")
+[node name="BarContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BarContainer"]
+layout_mode = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(610, 355)
-shape = SubResource("RectangleShape2D_0urlm")
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 274.0
-offset_top = 321.0
-offset_right = 946.0
-offset_bottom = 395.0
-theme_override_styles/background = SubResource("StyleBoxFlat_77x7w")
-theme_override_styles/fill = SubResource("StyleBoxFlat_xoyoh")
+[node name="Label" type="Label" parent="MarginContainer/BarContainer"]
+layout_mode = 2
+text = "Loading..."
