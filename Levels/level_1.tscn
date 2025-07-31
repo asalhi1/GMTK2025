@@ -16,9 +16,11 @@ size = Vector2(666, 69)
 bg_color = Color(0.0833298, 0.726508, 0, 1)
 
 [node name="Level1" type="Node2D"]
+position = Vector2(38, 9)
 script = ExtResource("1_3mhv4")
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-198, 9)
 script = ExtResource("2_rf6l5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]

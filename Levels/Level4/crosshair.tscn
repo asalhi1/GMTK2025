@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cbevij5ckrtc1"]
+
+[node name="Crosshair" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, -30)
+points = PackedVector2Array(0, 2, 0, 60)
+width = 5.0
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(31, -1)
+rotation = 1.5708
+points = PackedVector2Array(0, 2, 0, 60)
+width = 5.0
