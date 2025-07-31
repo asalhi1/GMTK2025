@@ -4,13 +4,14 @@ extends LineEdit
 @export var loading_bar : ProgressBar
 @export var error_label : Label
 @export var terminal : Node
+@export var typing_space : Node
 
 func _ready():
 	grab_focus()
 	connect("text_submitted", Callable(self, "_on_command_entered"))
 	
 	var t = create_tween()
-	t.set_trans(Tween.TRANS_QUAD)
+	t.set_trans(Tween.TRANS_EXPO)
 	t.tween_property(loading_bar, "value", 74, 2.5)
 	await t.finished
 	terminal.visible = true
@@ -42,4 +43,5 @@ func _on_command_entered(command: String):
 
 	text = ""  # Clear input
 	history.scroll_vertical = history.get_line_count()
-	grab_focus()
+	
+	typing_space.call_deferred("grab_focus")
