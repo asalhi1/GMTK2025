@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://rfqb6ljnld0e"]
+
+[ext_resource type="Script" uid="uid://ednc5a24ev5e" path="res://Scripts/level_1.gd" id="1_3mhv4"]
+[ext_resource type="Script" uid="uid://jq00golbakyn" path="res://Scripts/player.gd" id="2_rf6l5"]
+[ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="3_syshm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfktq"]
+size = Vector2(134, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0urlm"]
+size = Vector2(666, 69)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77x7w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoyoh"]
+bg_color = Color(0.0833298, 0.726508, 0, 1)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_3mhv4")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_rf6l5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(529, 233)
+texture = ExtResource("3_syshm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(529, 230.5)
+shape = SubResource("RectangleShape2D_rfktq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(610, 355)
+shape = SubResource("RectangleShape2D_0urlm")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 274.0
+offset_top = 321.0
+offset_right = 946.0
+offset_bottom = 395.0
+theme_override_styles/background = SubResource("StyleBoxFlat_77x7w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xoyoh")
