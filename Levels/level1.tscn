@@ -1,13 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://rfqb6ljnld0e"]
+[gd_scene load_steps=10 format=3 uid="uid://rfqb6ljnld0e"]
 
 [ext_resource type="Script" uid="uid://ednc5a24ev5e" path="res://Scripts/level_1.gd" id="1_i4kf4"]
-[ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="2_fy36t"]
+[ext_resource type="Theme" uid="uid://dfrxl1y8gt23g" path="res://Themes/level1.tres" id="1_njhy2"]
+[ext_resource type="Texture2D" uid="uid://6cod5ejqxkbp" path="res://Art/Level1/background100.png" id="2_fy36t"]
+[ext_resource type="Texture2D" uid="uid://dadve1i85x0fa" path="res://Art/Level1/fish100.png" id="3_njhy2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6f6w"]
+atlas = ExtResource("3_njhy2")
+region = Rect2(0, 0, 22, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_302sc"]
+atlas = ExtResource("3_njhy2")
+region = Rect2(22, 0, 22, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aunfx"]
+atlas = ExtResource("3_njhy2")
+region = Rect2(44, 0, 22, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j32wv"]
+atlas = ExtResource("3_njhy2")
+region = Rect2(66, 0, 22, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dilhk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_fy36t")
+"texture": SubResource("AtlasTexture_m6f6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_302sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aunfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j32wv")
 }],
 "loop": true,
 "name": &"default",
@@ -15,15 +42,26 @@ animations = [{
 }]
 
 [node name="Level1" type="Control" node_paths=PackedStringArray("player", "progress_bar")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_njhy2")
 script = ExtResource("1_i4kf4")
 player = NodePath("MarginContainer/AnimatedSprite2D")
 progress_bar = NodePath("MarginContainer/BarContainer/ProgressBar")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fy36t")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -35,19 +73,32 @@ grow_vertical = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 25
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]
 position = Vector2(65, 528)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dilhk")
+autoplay = "default"
+frame_progress = 0.816474
 
 [node name="BarContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
+[node name="Label" type="Label" parent="MarginContainer/BarContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Loading..."
+
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BarContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/BarContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/BarContainer"]
 layout_mode = 2
-text = "Loading..."
+
+[node name="Label2" type="Label" parent="MarginContainer/BarContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Did you know you could use arrow keys to move?"
+horizontal_alignment = 1

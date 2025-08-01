@@ -19,14 +19,12 @@ func _ready():
 	start_x = bar_rect.position.x
 	end_x = bar_rect.position.x + bar_rect.size.x
 
-	print(str(start_x) + " " + str(end_x))
-	
 	fake_progress = 0.0
 	progress_bar.value = 0.0
 	is_fake_loading = true
 	
 	player.position.x = start_x
-	player.position.y = bar_rect.position.y - 100
+	player.position.y = bar_rect.position.y - 50
 
 func _process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
