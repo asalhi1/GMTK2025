@@ -3,12 +3,14 @@
 [node name="Crosshair" type="Node2D"]
 
 [node name="Line2D" type="Line2D" parent="."]
-position = Vector2(0, -30)
+position = Vector2(0, -15)
+scale = Vector2(0.5, 0.5)
 points = PackedVector2Array(0, 2, 0, 60)
-width = 5.0
+default_color = Color(0.552941, 0.745098, 0.745098, 1)
 
 [node name="Line2D2" type="Line2D" parent="."]
-position = Vector2(31, -1)
+position = Vector2(16, 0)
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 points = PackedVector2Array(0, 2, 0, 60)
-width = 5.0
+default_color = Color(0.552941, 0.745098, 0.745098, 1)

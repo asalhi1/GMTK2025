@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2qiblfml5enu"]
+
+[ext_resource type="Script" uid="uid://ccswopyk84xmi" path="res://Utilities/ambient_glitch.gd" id="1_qtya3"]
+[ext_resource type="Shader" uid="uid://cvbbwxflyn5rb" path="res://Utilities/transition_manager.gdshader" id="2_lo4g1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1wso"]
+shader = ExtResource("2_lo4g1")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[node name="AmbientGlitch" type="CanvasLayer" node_paths=PackedStringArray("glitch_rect")]
+layer = 2
+script = ExtResource("1_qtya3")
+glitch_rect = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_t1wso")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -6,7 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w4uv1"]
 shader = ExtResource("2_xdkq7")
 shader_parameter/shake_power = 0.0
-shader_parameter/shake_rate = 0.2
+shader_parameter/shake_rate = 0.0
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.01
@@ -16,7 +16,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("ColorRectTransition:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/shake_power")
+tracks/1/path = NodePath("ColorRectTransition:material:shader_parameter/shake_power")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -43,7 +43,7 @@ resource_name = "glitch_in"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("ColorRectTransition:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,7 +55,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/shake_power")
+tracks/1/path = NodePath("ColorRectTransition:material:shader_parameter/shake_power")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -70,7 +70,7 @@ resource_name = "glitch_out"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
+tracks/0/path = NodePath("ColorRectTransition:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +82,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:material:shader_parameter/shake_power")
+tracks/1/path = NodePath("ColorRectTransition:material:shader_parameter/shake_power")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -99,10 +99,12 @@ _data = {
 &"glitch_out": SubResource("Animation_x1v4d")
 }
 
-[node name="TransitionManager" type="CanvasLayer"]
+[node name="TransitionManager" type="CanvasLayer" node_paths=PackedStringArray("transition_glitch", "animation_player")]
 script = ExtResource("1_e6kkr")
+transition_glitch = NodePath("ColorRectTransition")
+animation_player = NodePath("AnimationPlayer")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRectTransition" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_w4uv1")
 anchors_preset = 15
 anchor_right = 1.0

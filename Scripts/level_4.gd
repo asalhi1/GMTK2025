@@ -5,7 +5,7 @@ extends Control
 @export var duck_container : Node
 @export var progress_bar : ProgressBar
 
-var total_ducks := 6
+var total_ducks := 10
 var ducks_shot := 0
 var crosshair
 
@@ -15,7 +15,7 @@ func _ready():
 	add_child(crosshair)
 	for i in total_ducks:
 		var duck = duck_scene.instantiate()
-		duck.position = Vector2(-i * 200 + 1000, -100) 
+		duck.position = Vector2(-i * 125 + 1000, -50) 
 		duck_container.add_child(duck)
 		duck.duck_shot.connect(_on_duck_shot)
 
