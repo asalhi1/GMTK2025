@@ -13,9 +13,15 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	crosshair = crosshair_scene.instantiate()
 	add_child(crosshair)
-	for i in total_ducks:
+
+	var screen_width = get_viewport_rect().size.x
+	var spacing = screen_width / (total_ducks)
+	var y_pos = -50  # vertical position of ducks (adjust to fit your UI)
+	
+	for i in range(total_ducks):
 		var duck = duck_scene.instantiate()
-		duck.position = Vector2(-i * 125 + 1000, -50) 
+		var x_pos = spacing * (i + 1)
+		duck.position = Vector2(x_pos, y_pos)
 		duck_container.add_child(duck)
 		duck.duck_shot.connect(_on_duck_shot)
 
@@ -30,4 +36,5 @@ func _on_duck_shot():
 	t.tween_property(progress_bar, "value", float(ducks_shot) / total_ducks * 100.0, .5)
 	#progress_bar.value = float(ducks_shot) / total_ducks * 100.0
 	if ducks_shot == total_ducks:
-		print("Loading complete!")
+		TransitionManager.transition_to("res://Levels/endscreen.tscn")
+		AmbientGlitch.set_glitch_level(0)

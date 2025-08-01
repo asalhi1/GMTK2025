@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2qch1svmbjpp"]
+[gd_scene load_steps=13 format=3 uid="uid://b2qch1svmbjpp"]
 
 [ext_resource type="Script" uid="uid://bs8150myfx7tq" path="res://Scripts/level_4.gd" id="1_1nblm"]
 [ext_resource type="PackedScene" uid="uid://c2mbdg6yrafb1" path="res://Levels/Level4/duck.tscn" id="1_qtf76"]
 [ext_resource type="Theme" uid="uid://jjw4ycx2it8e" path="res://Themes/level4.tres" id="1_tuash"]
 [ext_resource type="PackedScene" uid="uid://cbevij5ckrtc1" path="res://Levels/Level4/crosshair.tscn" id="3_u7xlw"]
-[ext_resource type="Texture2D" uid="uid://dudnbpm1tmyqo" path="res://Art/Level4/bar/level 4.png" id="4_u4wsb"]
 [ext_resource type="Texture2D" uid="uid://bxgrbd5w4vdqb" path="res://Art/Level4/sky/level 4.png" id="5_hk1yq"]
 [ext_resource type="Texture2D" uid="uid://bjue16s36q10x" path="res://Art/Level4/clouds/level 4.png" id="6_05n5a"]
 [ext_resource type="Texture2D" uid="uid://dilhfowv2kcid" path="res://Art/Level4/clouds/level 5.png" id="7_fs526"]
@@ -35,27 +34,13 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u4wsb"]
-texture = ExtResource("4_u4wsb")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
-expand_margin_left = 20.0
-expand_margin_top = 20.0
-expand_margin_right = 20.0
-expand_margin_bottom = 20.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-draw_center = false
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hk1yq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05n5a"]
 bg_color = Color(0.552941, 0.745098, 0.745098, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-anti_aliasing = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.552941, 0.745098, 0.745098, 1)
 
 [node name="Level4" type="Control" node_paths=PackedStringArray("duck_container", "progress_bar")]
 texture_filter = 1
@@ -71,19 +56,15 @@ script = ExtResource("1_1nblm")
 duck_scene = ExtResource("1_qtf76")
 crosshair_scene = ExtResource("3_u7xlw")
 duck_container = NodePath("MarginContainer/BarContainer")
-progress_bar = NodePath("MarginContainer/BarContainer/ProgressBar")
+progress_bar = NodePath("MarginContainer/BarContainer/MarginContainer/ProgressBar")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3456.0
-offset_bottom = 1944.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_hk1yq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -107,18 +88,19 @@ theme_override_constants/margin_bottom = 25
 [node name="BarContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_constants/separation = 10
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BarContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BarContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BarContainer/MarginContainer"]
 texture_filter = 1
 layout_mode = 2
-theme_override_styles/background = SubResource("StyleBoxTexture_u4wsb")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hk1yq")
 show_percentage = false
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/BarContainer"]
-show_behind_parent = true
-layout_mode = 2
-theme_override_constants/separation = 15
 
 [node name="Label" type="Label" parent="MarginContainer/BarContainer"]
 layout_mode = 2
@@ -128,6 +110,7 @@ text = "LOADING..."
 show_behind_parent = true
 layout_mode = 2
 theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxFlat_05n5a")
 
 [node name="Label2" type="Label" parent="MarginContainer/BarContainer"]
 custom_minimum_size = Vector2(5, 0)

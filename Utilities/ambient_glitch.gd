@@ -2,17 +2,17 @@ extends CanvasLayer
 
 @export var glitch_rect : ColorRect
 
-var glitch_level := 0
+var glitch_level : float = 0
 
 func _ready():
 	update_glitch_intensity()
 
 func increase_glitch_level():
 	print(glitch_level)
-	glitch_level += 1
+	glitch_level += .5
 	update_glitch_intensity()
 
-func set_glitch_level(level: int):
+func set_glitch_level(level: float):
 	glitch_level = level
 	update_glitch_intensity()
 

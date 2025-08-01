@@ -11,13 +11,13 @@ extends Control
 
 var captcha_solutions = [
 	[0, 3, 7],
-	[2, 4, 8],
-	[1, 5, 6]
+#	[2, 4, 8],
+#	[1, 5, 6]
 ]
 var captcha_text = [
-	"Select all images with a car",
-	"Select all images with a fire hydrant",
-	"Select all images with a crosswalk"
+	"Select all images with a JUMPSCARE",
+#	"Select all images with a fire hydrant",
+#	"Select all images with a crosswalk"
 ]
 var current_captcha = 0
 var selected_cells = []
@@ -51,12 +51,19 @@ func show_captcha(index):
 		# btn.texture_normal = preload("res://captcha%d_tile%d.png" % [index, i])
 
 func _on_captcha_cell_pressed(index):
+	var btn = captcha_grid.get_child(index)
+	
 	if selected_cells.has(index):
 		selected_cells.erase(index)
+		btn.modulate = Color(1, 1, 1)
+		#btn.scale = Vector2(1, 1)
 	else:
 		selected_cells.append(index)
+		#btn.scale = Vector2(.9, .9)
+		btn.modulate = Color(0.7, 0.7, 1)
 	
 	print(selected_cells)
+
 
 func complete_loading():
 	captcha_ui.visible = false
@@ -76,7 +83,7 @@ func _on_verify_pressed() -> void:
 	if selected_cells == captcha_solutions[current_captcha]:
 		complete_loading()
 	else:
-		current_captcha = (current_captcha + 1) % 3
-		captcha_label.text = "Incorrect. Try another CAPTCHA."
+		# current_captcha = (current_captcha + 1) % 3
+		captcha_label.text = "Incorrect. Try again."
 		await get_tree().create_timer(0.5).timeout
 		show_captcha(current_captcha)

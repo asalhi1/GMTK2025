@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://rfqb6ljnld0e"]
 
-[ext_resource type="Script" uid="uid://ednc5a24ev5e" path="res://Scripts/level_1.gd" id="1_3mhv4"]
-[ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="3_syshm"]
+[ext_resource type="Script" uid="uid://ednc5a24ev5e" path="res://Scripts/level_1.gd" id="1_i4kf4"]
+[ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="2_fy36t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dilhk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_syshm")
+"texture": ExtResource("2_fy36t")
 }],
 "loop": true,
 "name": &"default",
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3mhv4")
+script = ExtResource("1_i4kf4")
 player = NodePath("MarginContainer/AnimatedSprite2D")
 progress_bar = NodePath("MarginContainer/BarContainer/ProgressBar")
 
@@ -32,9 +32,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
+theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer"]

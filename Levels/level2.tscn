@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://2hfvif0udh5a"]
+[gd_scene load_steps=12 format=3 uid="uid://2hfvif0udh5a"]
 
-[ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="1_24phs"]
+[ext_resource type="Theme" uid="uid://cuwgr61qadgvu" path="res://Themes/level2.tres" id="1_tdxkx"]
 [ext_resource type="Script" uid="uid://b60q4iis2reg8" path="res://Scripts/level_2.gd" id="1_ty1rc"]
+[ext_resource type="Texture2D" uid="uid://buoc25wuwoxle" path="res://Art/Level2/job.png" id="2_p0prn"]
+[ext_resource type="Texture2D" uid="uid://d4no84xsptf03" path="res://Art/Level2/Cats/OIP-490713621.png" id="3_lr0ko"]
+[ext_resource type="Texture2D" uid="uid://cdusao0y11v0m" path="res://Art/Level2/shower.png" id="4_dj5hn"]
+[ext_resource type="Texture2D" uid="uid://ds1ue7sku2c2p" path="res://Art/Level2/Cats/OIP-1120314885.png" id="4_tdxkx"]
+[ext_resource type="Texture2D" uid="uid://uhbkiy25dj0y" path="res://Art/Level2/employment.png" id="5_ojro4"]
+[ext_resource type="Texture2D" uid="uid://cok2y04acvhc5" path="res://Art/Level2/Cats/OIP-1313941165.png" id="6_1c22n"]
+[ext_resource type="Texture2D" uid="uid://cswfpnukph8pv" path="res://Art/Level2/Cats/OIP-3506078651.png" id="7_ppd48"]
+[ext_resource type="Texture2D" uid="uid://brxpx74pc3xpw" path="res://Art/Level2/Cats/OIP-4287910165.png" id="8_bl3jk"]
+[ext_resource type="Texture2D" uid="uid://oxj1kdyju1q0" path="res://Art/Level2/Cats/OIP-4190974541.jpeg" id="10_65ryg"]
 
 [node name="Level2" type="Control" node_paths=PackedStringArray("captcha_ui", "captcha_button_container", "captcha_button", "captcha_label", "captcha_grid", "loading_bar", "loading_label")]
 layout_mode = 3
@@ -10,39 +19,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_tdxkx")
 script = ExtResource("1_ty1rc")
-captcha_ui = NodePath("Captcha")
-captcha_button_container = NodePath("CaptchaButtonContainer")
-captcha_button = NodePath("CaptchaButtonContainer/CaptchaButton")
-captcha_label = NodePath("Captcha/VBoxContainer/Label")
-captcha_grid = NodePath("Captcha/VBoxContainer/GridContainer")
-loading_bar = NodePath("BarContainer/ProgressBar")
-loading_label = NodePath("BarContainer/Label")
+captcha_ui = NodePath("MarginContainer/Captcha")
+captcha_button_container = NodePath("MarginContainer/CaptchaButtonContainer")
+captcha_button = NodePath("MarginContainer/CaptchaButtonContainer/CaptchaButton")
+captcha_label = NodePath("MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/Label")
+captcha_grid = NodePath("MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer")
+loading_bar = NodePath("MarginContainer/BarContainer/ProgressBar")
+loading_label = NodePath("MarginContainer/BarContainer/Label")
 
-[node name="CaptchaButtonContainer" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -154.5
-offset_top = -29.0
-offset_right = 154.5
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="CaptchaButtonContainer"]
-layout_mode = 2
-text = "Please complete a CAPTCHA to continue"
-
-[node name="CaptchaButton" type="Button" parent="CaptchaButtonContainer"]
-layout_mode = 2
-text = "I'm not a robot"
-
-[node name="Captcha" type="CenterContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,73 +37,119 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Captcha"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 50
+
+[node name="CaptchaButtonContainer" type="VBoxContainer" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/CaptchaButtonContainer"]
+layout_mode = 2
+text = "Please complete a CAPTCHA to continue"
+
+[node name="CaptchaButton" type="Button" parent="MarginContainer/CaptchaButtonContainer"]
+layout_mode = 2
+text = "I'm not a robot"
+
+[node name="Captcha" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Captcha"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Captcha/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Captcha/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Captcha/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Select all pictures with a car"
 
-[node name="GridContainer" type="GridContainer" parent="Captcha/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="TextureButton" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("2_p0prn")
+stretch_mode = 3
 
-[node name="TextureButton2" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("3_lr0ko")
+stretch_mode = 3
 
-[node name="TextureButton3" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("4_tdxkx")
+stretch_mode = 3
 
-[node name="TextureButton4" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton4" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("4_dj5hn")
+stretch_mode = 3
 
-[node name="TextureButton5" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton5" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("6_1c22n")
+stretch_mode = 3
 
-[node name="TextureButton6" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton6" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("7_ppd48")
+stretch_mode = 3
 
-[node name="TextureButton7" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton7" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("8_bl3jk")
+stretch_mode = 3
 
-[node name="TextureButton8" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton8" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("5_ojro4")
+stretch_mode = 3
 
-[node name="TextureButton9" type="TextureButton" parent="Captcha/VBoxContainer/GridContainer"]
+[node name="TextureButton9" type="TextureButton" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_24phs")
+texture_normal = ExtResource("10_65ryg")
+stretch_mode = 3
 
-[node name="Button" type="Button" parent="Captcha/VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "Verify"
 
-[node name="BarContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -54.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="BarContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="BarContainer"]
+[node name="Label" type="Label" parent="MarginContainer/BarContainer"]
 layout_mode = 2
 text = "Downloading more RAM..."
 
-[node name="ProgressBar" type="ProgressBar" parent="BarContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BarContainer"]
 layout_mode = 2
+value = 50.0
 
-[connection signal="pressed" from="CaptchaButtonContainer/CaptchaButton" to="." method="_on_captcha_button_pressed"]
-[connection signal="pressed" from="Captcha/VBoxContainer/Button" to="." method="_on_verify_pressed"]
+[connection signal="pressed" from="MarginContainer/CaptchaButtonContainer/CaptchaButton" to="." method="_on_captcha_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_verify_pressed"]

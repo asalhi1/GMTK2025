@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK2025"
-run/main_scene="uid://2hfvif0udh5a"
+run/main_scene="uid://d33pbendkowgw"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 TransitionManager="*res://Utilities/transition_manager.tscn"
 AmbientGlitch="*res://Utilities/ambient_glitch.tscn"
+
+[display]
+
+window/size/mode=3
+window/size/resizable=false
 
 [rendering]
 
