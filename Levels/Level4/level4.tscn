@@ -104,7 +104,7 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="MarginContainer/BarContainer"]
 layout_mode = 2
-text = "LOADING..."
+text = "Nearly there..."
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/BarContainer"]
 show_behind_parent = true

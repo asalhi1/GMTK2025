@@ -23,6 +23,7 @@ var current_captcha = 0
 var selected_cells = []
 
 func _ready():
+	MusicManager.play_music_for_level("variant2")
 	captcha_ui.visible = false
 	captcha_button_container.visible = false
 	start_loading()

@@ -71,7 +71,7 @@ size_flags_vertical = 10
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/BarContainer"]
 layout_mode = 2
-text = "Hacking into the mainframe..."
+text = "Reticulating splines..."
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer2/BarContainer"]
 layout_mode = 2

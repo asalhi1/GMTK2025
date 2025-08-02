@@ -19,11 +19,22 @@ config/icon="res://icon.svg"
 
 TransitionManager="*res://Utilities/transition_manager.tscn"
 AmbientGlitch="*res://Utilities/ambient_glitch.tscn"
+MusicManager="*res://Utilities/music_manager.tscn"
 
 [display]
 
+window/size/viewport_width=1366
+window/size/viewport_height=768
 window/size/mode=3
 window/size/resizable=false
+window/stretch/mode="viewport"
+
+[input]
+
+jump={
+"deadzone": 0.2,
+"events": []
+}
 
 [rendering]
 

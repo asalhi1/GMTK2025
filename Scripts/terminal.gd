@@ -7,6 +7,7 @@ extends LineEdit
 @export var typing_space : Node
 
 func _ready():
+	MusicManager.play_music_for_level("8bit")
 	grab_focus()
 	connect("text_submitted", Callable(self, "_on_command_entered"))
 	
@@ -26,7 +27,7 @@ func _on_command_entered(command: String):
 			loading_bar.value = 100
 			history.text += "\nResuming loading sequence..."
 			await get_tree().create_timer(1.0).timeout
-			TransitionManager.transition_to("res://Levels/Level4/level4.tscn")
+			TransitionManager.transition_to("res://Levels/level5.tscn")
 		"help":
 			history.text += "\nAvailable commands:\n - status\n - launch_missiles\n - make_coffee\n - reboot\n - help\n - clear"
 		"status":

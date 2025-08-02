@@ -19,6 +19,7 @@ var msgs = [
 ]
 
 func _ready():
+	MusicManager.play_music_for_level("variant1")
 	accept_button.pressed.connect(_on_accept_pressed)
 	decline_button.pressed.connect(_on_decline_pressed)
 
@@ -34,4 +35,4 @@ func _on_accept_pressed():
 
 func _on_decline_pressed():
 	finishing_loading = true
-	TransitionManager.transition_to("res://Levels/endscreen.tscn")
+	TransitionManager.transition_to("res://Levels/level2.tscn")

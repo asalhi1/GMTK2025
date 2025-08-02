@@ -134,7 +134,7 @@ size_flags_vertical = 10
 [node name="Label" type="Label" parent="MarginContainer/BarContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.556863, 0, 1)
-text = "Loading..."
+text = "Downloading browser history..."
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BarContainer"]
 layout_mode = 2
