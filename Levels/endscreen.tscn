@@ -1,4 +1,23 @@
-[gd_scene format=3 uid="uid://svil8hg34l1j"]
+[gd_scene load_steps=5 format=3 uid="uid://svil8hg34l1j"]
+
+[ext_resource type="Script" uid="uid://ddxsjaglv6oa7" path="res://Scripts/endscreen.gd" id="1_ds8tw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ds8tw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xs4k4"]
+border_color = Color(0.6, 0.6, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30nsy"]
+bg_color = Color(0.432624, 0.432624, 0.432624, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+anti_aliasing = false
 
 [node name="Endscreen" type="Control"]
 layout_mode = 3
@@ -7,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ds8tw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -41,11 +61,36 @@ theme_override_font_sizes/font_size = 64
 text = ":("
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Your game has crashed."
+text = "Your game has crashed. An unexpected error occurred and we couldn’t load the whole level. However, we were Almost There…"
+autowrap_mode = 2
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "ERR_CODE 0xLOOP"
+text = "ERR_CODE 0xLOOP, thanks for playing!"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -40.0
+offset_right = 48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 25
+
+[node name="Button" type="Button" parent="MarginContainer2" groups=["Button"]]
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_ds8tw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xs4k4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_30nsy")
+text = "Main Menu"
+
+[connection signal="pressed" from="MarginContainer2/Button" to="." method="_on_button_pressed"]

@@ -66,11 +66,12 @@ size_flags_vertical = 4
 layout_mode = 2
 text = "Please complete a CAPTCHA to continue"
 
-[node name="CaptchaButton" type="Button" parent="MarginContainer/CaptchaButtonContainer"]
+[node name="CaptchaButton" type="Button" parent="MarginContainer/CaptchaButtonContainer" groups=["Button"]]
 layout_mode = 2
 text = "I'm not a robot"
 
 [node name="Captcha" type="CenterContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -141,7 +142,7 @@ layout_mode = 2
 texture_normal = ExtResource("10_65ryg")
 stretch_mode = 3
 
-[node name="Button" type="Button" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer" groups=["Button"]]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Verify"

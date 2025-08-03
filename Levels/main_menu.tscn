@@ -1,27 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://d33pbendkowgw"]
+[gd_scene load_steps=5 format=3 uid="uid://d33pbendkowgw"]
 
 [ext_resource type="Script" uid="uid://bvgys8rviy7u4" path="res://Scripts/main_menu.gd" id="1_6ucrw"]
+[ext_resource type="Theme" uid="uid://wkkchg81w0ou" path="res://Themes/main_menu.tres" id="1_8md67"]
 [ext_resource type="PackedScene" uid="uid://d38vmb0v5wwji" path="res://Utilities/vignette.tscn" id="2_jy27m"]
+[ext_resource type="Texture2D" uid="uid://bl7sp7oxwrjif" path="res://Art/title screen/background w character.png" id="3_3es34"]
 
 [node name="main_menu" type="Control"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8md67")
 script = ExtResource("1_6ucrw")
 
 [node name="Vignette" parent="." instance=ExtResource("2_jy27m")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.152476, 0.152476, 0.152476, 1)
+texture = ExtResource("3_3es34")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -30,39 +34,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 250
 theme_override_constants/margin_top = 150
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 150
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 50
 
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Start" type="Button" parent="MarginContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 3
 text = "START"
 
-[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Options" type="Button" parent="MarginContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 3
 text = "OPTIONS"
 
-[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Credits" type="Button" parent="MarginContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+size_flags_horizontal = 3
 text = "CREDITS
 "
 
-[node name="Label" type="Label" parent="MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 72
-text = "Title or smth"
-horizontal_alignment = 1
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Credits" to="." method="_on_credits_pressed"]

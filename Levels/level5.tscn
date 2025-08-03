@@ -1,13 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://6xsven461jw6"]
+[gd_scene load_steps=11 format=3 uid="uid://6xsven461jw6"]
 
 [ext_resource type="Script" uid="uid://c2td1fulbpexw" path="res://Scripts/level_5.gd" id="1_fh8n1"]
-[ext_resource type="Texture2D" uid="uid://cisfc351ycphb" path="res://Art/level 6/level 6 update/Statue 1.png" id="2_b3501"]
-[ext_resource type="Texture2D" uid="uid://y358dphsbhff" path="res://Art/level 6/level 6 update/Background.png" id="2_fj68v"]
+[ext_resource type="Texture2D" uid="uid://r06dipis5fj5" path="res://Art/level 6/level 6 update/Statue 1.png" id="2_b3501"]
+[ext_resource type="Texture2D" uid="uid://cl05l8t748jjp" path="res://Art/level 6/level 6 update/Background.png" id="2_fj68v"]
+[ext_resource type="PackedScene" uid="uid://d38vmb0v5wwji" path="res://Utilities/vignette.tscn" id="2_kdpyi"]
 [ext_resource type="Script" uid="uid://cakruym8l5vr8" path="res://Scripts/statue_slot.gd" id="3_b3501"]
-[ext_resource type="Texture2D" uid="uid://dkl64mm6tifc7" path="res://Art/level 6/level 6 update/Statue 2.png" id="4_fj68v"]
-[ext_resource type="Texture2D" uid="uid://7ejabnr0t8y6" path="res://Art/level 6/level 6 update/Statue 3.png" id="5_ggu74"]
-[ext_resource type="Texture2D" uid="uid://cskjdigqvbqno" path="res://Art/level 6/level 6 update/New Project 43 [22FE7E4].png" id="7_ggu74"]
-[ext_resource type="Texture2D" uid="uid://b38bg8lngkxgo" path="res://Art/level 6/level 6 update/bar full [C9776B4].png" id="8_ggu74"]
+[ext_resource type="Texture2D" uid="uid://djgs61qo4c5l2" path="res://Art/level 6/level 6 update/Statue 2.png" id="4_fj68v"]
+[ext_resource type="Texture2D" uid="uid://ciwya6ci7g6x5" path="res://Art/level 6/level 6 update/Statue 3.png" id="5_ggu74"]
+[ext_resource type="Texture2D" uid="uid://b4b3h22thy2so" path="res://Art/level 6/level 6 update/New Project 43 [22FE7E4].png" id="7_ggu74"]
+[ext_resource type="Texture2D" uid="uid://c5vl14lnx7hgh" path="res://Art/level 6/level 6 update/bar full [C9776B4].png" id="8_ggu74"]
 [ext_resource type="FontFile" uid="uid://cxwuye8sfm2k8" path="res://Assets/Fonts/TinyUnicode (lvl 4).ttf" id="9_4omtb"]
 
 [node name="Level5" type="Control" node_paths=PackedStringArray("hbox_container")]
@@ -19,6 +20,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fh8n1")
 hbox_container = NodePath("MarginContainer/HBoxContainer")
+
+[node name="Vignette" parent="." instance=ExtResource("2_kdpyi")]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -52,6 +55,7 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 0
+mouse_default_cursor_shape = 15
 texture = ExtResource("2_b3501")
 stretch_mode = 2
 script = ExtResource("3_b3501")
@@ -62,6 +66,7 @@ parent = NodePath("../../..")
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 0
+mouse_default_cursor_shape = 15
 texture = ExtResource("4_fj68v")
 stretch_mode = 2
 script = ExtResource("3_b3501")
@@ -72,6 +77,7 @@ parent = NodePath("../../..")
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 0
+mouse_default_cursor_shape = 15
 texture = ExtResource("5_ggu74")
 stretch_mode = 2
 script = ExtResource("3_b3501")
@@ -82,18 +88,30 @@ parent = NodePath("../../..")
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 0
+mouse_default_cursor_shape = 15
 texture = ExtResource("7_ggu74")
 stretch_mode = 2
 script = ExtResource("3_b3501")
 statue_height = 4
 parent = NodePath("../../..")
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_4omtb")
+theme_override_font_sizes/font_size = 32
+text = "Killing child (process)..."
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("8_ggu74")
 
-[node name="Label" type="Label" parent="MarginContainer/TextureRect2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TextureRect2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,6 +125,6 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_4omtb")
-theme_override_font_sizes/font_size = 28
-text = "Tip: Sometime all we need is a little order... which can sometimes be done by clicking and dragging your mouse."
+theme_override_font_sizes/font_size = 32
+text = "Tip: Some figures cast longer shadows than others.."
 horizontal_alignment = 1

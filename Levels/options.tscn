@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw8p7g0rhtl7y"]
+
+[ext_resource type="PackedScene" uid="uid://d38vmb0v5wwji" path="res://Utilities/vignette.tscn" id="1_ldb8l"]
+[ext_resource type="Theme" uid="uid://wkkchg81w0ou" path="res://Themes/main_menu.tres" id="1_otv4a"]
+[ext_resource type="Script" uid="uid://vbtp0dhy06km" path="res://Levels/options.gd" id="2_mphia"]
+[ext_resource type="Texture2D" uid="uid://brfqftwvjgbt4" path="res://Art/title screen/background.png" id="2_otv4a"]
+
+[node name="Options" type="Control" node_paths=PackedStringArray("music_slider", "sfx_slider")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_otv4a")
+script = ExtResource("2_mphia")
+music_slider = NodePath("MarginContainer/VBoxContainer/BoxContainer/HSlider2")
+sfx_slider = NodePath("MarginContainer/VBoxContainer/BoxContainer/HSlider3")
+
+[node name="Vignette" parent="." instance=ExtResource("1_ldb8l")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_otv4a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 125
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 50
+
+[node name="BoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.118581, 0.118581, 0.118581, 1)
+theme_override_colors/font_outline_color = Color(0.160784, 0.0117647, 0.215686, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+text = "Music Volume"
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.118581, 0.118581, 0.118581, 1)
+theme_override_colors/font_outline_color = Color(0.160784, 0.0117647, 0.215686, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+text = "SFX Volume"
+
+[node name="HSlider3" type="HSlider" parent="MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" groups=["Button"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

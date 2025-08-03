@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2mbdg6yrafb1"]
+[gd_scene load_steps=12 format=3 uid="uid://c2mbdg6yrafb1"]
 
 [ext_resource type="Script" uid="uid://s0j57shebkje" path="res://Scripts/duck.gd" id="1_vvu0r"]
 [ext_resource type="Texture2D" uid="uid://dbpyhxkj8c6fr" path="res://Art/Level4/duck/level 4.png" id="2_tm824"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bbjip711j54v4" path="res://Art/Level4/duck/level 6.png" id="4_1oe6n"]
 [ext_resource type="Texture2D" uid="uid://sf710i00xq1t" path="res://Art/Level4/duck/level 7.png" id="5_ybdbk"]
 [ext_resource type="Texture2D" uid="uid://dby3o6lrn0vcf" path="res://Art/Level4/duck/level 8.png" id="6_785xu"]
+[ext_resource type="Texture2D" uid="uid://bk1xio3lybljw" path="res://Art/Level4/duck/level 9.png" id="7_1oe6n"]
+[ext_resource type="Texture2D" uid="uid://b5btle1g8odw6" path="res://Art/Level4/duck/level 10.png" id="8_ybdbk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dauhj"]
 animations = [{
@@ -28,10 +30,24 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_1oe6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ybdbk")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vvu0r"]
 size = Vector2(121, 122)
+
+[sub_resource type="Gradient" id="Gradient_1oe6n"]
+colors = PackedColorArray(0.890196, 0.737255, 0.215686, 1, 0.890196, 0.737255, 0.215686, 0)
 
 [node name="Duck" type="Area2D"]
 script = ExtResource("1_vvu0r")
@@ -42,11 +58,32 @@ texture_filter = 1
 position = Vector2(313, -73)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_dauhj")
+animation = &"fall"
 autoplay = "default"
+frame = 1
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_vvu0r")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = 5
+emitting = false
+amount = 100
+lifetime = 10.0
+one_shot = true
+speed_scale = 8.0
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 9.8)
+initial_velocity_max = 50.0
+angle_min = -90.0
+angle_max = 90.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+color = Color(0.890196, 0.737255, 0.215686, 1)
+color_ramp = SubResource("Gradient_1oe6n")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

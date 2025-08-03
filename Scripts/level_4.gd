@@ -27,6 +27,9 @@ func _ready():
 		duck.duck_shot.connect(_on_duck_shot)
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		SfxManager.play_sfx("shoot")
+	
 	crosshair.global_position = get_viewport().get_mouse_position()
 
 func _on_duck_shot():

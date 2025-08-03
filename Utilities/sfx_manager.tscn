@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=3 uid="uid://bte52lynx4ypc"]
+
+[ext_resource type="Script" uid="uid://bwnm77almnf2b" path="res://Utilities/sfx_manager.gd" id="1_0ipw1"]
+[ext_resource type="AudioStream" uid="uid://dsgikhgsyg8gu" path="res://Assets/Audio/SFX/click.wav" id="2_ybt7f"]
+[ext_resource type="AudioStream" uid="uid://dpyifr7u4ejl" path="res://Assets/Audio/SFX/shoot.wav" id="3_57rmn"]
+[ext_resource type="AudioStream" uid="uid://cedo0vt6h4col" path="res://Assets/Audio/SFX/jump.wav" id="4_cpeeo"]
+[ext_resource type="AudioStream" uid="uid://cpe30vl1qwoj" path="res://Assets/Audio/SFX/glitch.mp3" id="5_aua7f"]
+[ext_resource type="AudioStream" uid="uid://4rbdqgxa1sr4" path="res://Assets/Audio/SFX/windows_error.mp3" id="6_fcso0"]
+[ext_resource type="AudioStream" uid="uid://dq58extqrfasg" path="res://Assets/Audio/SFX/terminal_enter.wav" id="7_2j2f4"]
+[ext_resource type="AudioStream" uid="uid://u1xo4lfxpof0" path="res://Assets/Audio/SFX/typing.mp3" id="8_kqhpx"]
+
+[node name="SFXManager" type="Node" node_paths=PackedStringArray("audio_player")]
+script = ExtResource("1_0ipw1")
+audio_player = NodePath("AudioStreamPlayer")
+sfx_streams = {
+"click": ExtResource("2_ybt7f"),
+"enter_command": ExtResource("7_2j2f4"),
+"glitch": ExtResource("5_aua7f"),
+"jump": ExtResource("4_cpeeo"),
+"shoot": ExtResource("3_57rmn"),
+"typing": ExtResource("8_kqhpx"),
+"windowserror": ExtResource("6_fcso0")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 TransitionManager="*res://Utilities/transition_manager.tscn"
 AmbientGlitch="*res://Utilities/ambient_glitch.tscn"
 MusicManager="*res://Utilities/music_manager.tscn"
+SfxManager="*res://Utilities/sfx_manager.tscn"
 
 [display]
 
@@ -29,11 +30,20 @@ window/size/mode=3
 window/size/resizable=false
 window/stretch/mode="viewport"
 
+[global_group]
+
+Button=""
+
 [input]
 
 jump={
 "deadzone": 0.2,
 "events": []
+}
+shoot={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(80, 17),"global_position":Vector2(87, 54),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
 }
 
 [rendering]

@@ -6,11 +6,19 @@ extends LineEdit
 @export var terminal : Node
 @export var typing_space : Node
 
+var typing_timer : Timer
+
 func _ready():
 	MusicManager.play_music_for_level("8bit")
 	grab_focus()
 	connect("text_submitted", Callable(self, "_on_command_entered"))
-	
+
+	typing_timer = Timer.new()
+	typing_timer.timeout.connect(stop_typing)
+	typing_timer.one_shot = true
+	typing_timer.wait_time = 0.25
+	add_child(typing_timer)
+
 	var t = create_tween()
 	t.set_trans(Tween.TRANS_EXPO)
 	t.tween_property(loading_bar, "value", 74, 2.5)
@@ -18,6 +26,7 @@ func _ready():
 	terminal.visible = true
 
 func _on_command_entered(command: String):
+	SfxManager.play_sfx("enter_command")
 	command = command.strip_edges()
 	history.text += "\n> " + command
 
@@ -42,7 +51,15 @@ func _on_command_entered(command: String):
 			error_label.text = "Unknown command. Try again."
 			history.text += "\nUnknown command: '" + command + "'"
 
-	text = ""  # Clear input
+	text = ""
 	history.scroll_vertical = history.get_line_count()
-	
 	typing_space.call_deferred("grab_focus")
+
+func _gui_input(event):
+	if event is InputEventKey and event.pressed and !event.echo:
+		if not SfxManager.audio_player.playing:
+			SfxManager.play_sfx("typing")
+		typing_timer.start()
+
+func stop_typing():
+	SfxManager.stop_sfx()

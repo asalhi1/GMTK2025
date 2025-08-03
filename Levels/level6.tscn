@@ -119,11 +119,11 @@ autowrap_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
 text = "Accept"
 
-[node name="Button2" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" groups=["Button"]]
 layout_mode = 2
 text = "Hell no"
 

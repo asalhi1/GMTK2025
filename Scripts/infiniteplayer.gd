@@ -19,7 +19,8 @@ var start_position = Vector2(89, 646)
 @export var floor_2 : Node
 
 func _ready():
-	MusicManager.stop_music()
+	SfxManager.play_sfx("glitch")
+	MusicManager.play_music_for_level("infinite")
 
 func _physics_process(delta):
 	# Update the jump buffer timer
@@ -39,6 +40,8 @@ func _physics_process(delta):
 		var acceleration =  RAPID_ACCELERATION if is_rapid_change else ACCELERATION
 		velocity.x += acceleration * input_direction * delta
 		velocity.x = clamp(velocity.x, -MAX_SPEED, MAX_SPEED)
+		
+		$AnimatedSprite2D.play("run")
 	elif velocity.x != 0:
 		# Apply rapid deceleration if changing direction quickly, otherwise normal or air deceleration
 		var decel = RAPID_DECELERATION if is_rapid_change else ( GROUND_DECELERATION if is_on_floor() else AIR_DECELERATION)
@@ -53,21 +56,41 @@ func _physics_process(delta):
 
 	# Jumping Logic
 	if jump_buffer_timer > 0 and is_on_floor():
+		SfxManager.play_sfx("jump")
 		velocity.y = -JUMP_FORCE
 		jump_buffer_timer = 0
 
 	# Gravity Application
 	velocity.y += GRAVITY * delta
 
+	if velocity.x > 0.1:
+		$AnimatedSprite2D.flip_h = false
+		$CPUParticles2D.direction.x = -1.0
+		$CPUParticles2D.emitting = true
+	elif velocity.x < -.1:
+		$AnimatedSprite2D.flip_h = true
+		$CPUParticles2D.direction.x = 1.0
+		$CPUParticles2D.emitting = true
+	else:
+		$AnimatedSprite2D.play("default")
+		$CPUParticles2D.emitting = false
+
+	if !is_on_floor():
+		$CPUParticles2D.emitting = false
+		$AnimatedSprite2D.play("jump")
+
 	# Character Movement
 	move_and_slide()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		TransitionManager.start_glitch()
 		body.velocity = Vector2(0, 0)
 		body.global_position = start_position
 		floor_2.position.x += 150
-
+		await get_tree().create_timer(.5).timeout
+		TransitionManager.end_glitch()
 
 func _on_pit_body_entered(body: Node2D) -> void:
-	TransitionManager.transition_to("res://Levels/endscreen.tscn")
+	if body.name == "Player":
+		TransitionManager.transition_to("res://Levels/endscreen.tscn")
