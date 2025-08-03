@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbva6lcml053y"]
+
+[ext_resource type="Script" uid="uid://ctb6yurhq0h12" path="res://Scripts/level_7.gd" id="1_f3ldr"]
+
+[node name="level7" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f3ldr")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "There is no way I am waiting this long ! Maybe I should fix 
+the clock.."
+
+[node name="ClockUI" type="CanvasLayer" parent="."]
+
+[node name="ClockContainer" type="HBoxContainer" parent="ClockUI"]
+offset_left = 287.0
+offset_top = 202.0
+offset_right = 793.0
+offset_bottom = 308.0
+
+[node name="HourInput" type="LineEdit" parent="ClockUI/ClockContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "99"
+
+[node name="Colon1" type="Label" parent="ClockUI/ClockContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="MinuteInput" type="LineEdit" parent="ClockUI/ClockContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "59"
+
+[node name="Colon2" type="Label" parent="ClockUI/ClockContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="SecondInput" type="LineEdit" parent="ClockUI/ClockContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "30"
+
+[node name="ProgressBar" type="ProgressBar" parent="ClockUI"]
+offset_top = 501.0
+offset_right = 1139.0
+offset_bottom = 578.0
+
+[node name="TickTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CountDown" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 332.0
+offset_right = 1103.0
+offset_bottom = 402.0
+theme_override_font_sizes/font_size = 40
+
+[node name="LoadTimer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
