@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2hfvif0udh5a"]
+[gd_scene load_steps=13 format=3 uid="uid://2hfvif0udh5a"]
 
 [ext_resource type="Theme" uid="uid://cuwgr61qadgvu" path="res://Themes/level2.tres" id="1_tdxkx"]
 [ext_resource type="Script" uid="uid://b60q4iis2reg8" path="res://Scripts/level_2.gd" id="1_ty1rc"]
@@ -11,6 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://cswfpnukph8pv" path="res://Art/Level2/Cats/OIP-3506078651.png" id="7_ppd48"]
 [ext_resource type="Texture2D" uid="uid://brxpx74pc3xpw" path="res://Art/Level2/Cats/OIP-4287910165.png" id="8_bl3jk"]
 [ext_resource type="Texture2D" uid="uid://oxj1kdyju1q0" path="res://Art/Level2/Cats/OIP-4190974541.jpeg" id="10_65ryg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tdxkx"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="Level2" type="Control" node_paths=PackedStringArray("captcha_ui", "captcha_button_container", "captcha_button", "captcha_label", "captcha_grid", "loading_bar", "loading_label")]
 layout_mode = 3
@@ -47,7 +54,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_bottom = 25
 
 [node name="CaptchaButtonContainer" type="VBoxContainer" parent="MarginContainer"]
 visible = false
@@ -150,6 +157,15 @@ text = "Downloading more RAM..."
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/BarContainer"]
 layout_mode = 2
 value = 50.0
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/BarContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_tdxkx")
+
+[node name="Label2" type="Label" parent="MarginContainer/BarContainer"]
+layout_mode = 2
+text = "Tip: Press Alt+F4 to enable pizza mode"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/CaptchaButtonContainer/CaptchaButton" to="." method="_on_captcha_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Captcha/PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_verify_pressed"]

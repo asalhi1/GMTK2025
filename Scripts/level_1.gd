@@ -14,6 +14,7 @@ var is_fake_loading = false
 var fake_progress = 0
 
 func _ready():
+	MusicManager.play_music_for_level("8bit")
 	await get_tree().process_frame
 	var bar_rect = progress_bar.get_global_rect()
 	start_x = bar_rect.position.x
@@ -49,4 +50,4 @@ func _process(delta):
 		progress_bar.value = progress * 100.0
 	
 	if progress_bar.value >= 95:
-		TransitionManager.transition_to("res://Levels/level2.tscn")
+		TransitionManager.transition_to("res://Levels/level6.tscn")

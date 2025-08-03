@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqau6whto4ox3"]
+
+[ext_resource type="Script" uid="uid://b4modu0tr6yv3" path="res://Scripts/infiniteplayer.gd" id="1_a4no0"]
+[ext_resource type="Texture2D" uid="uid://crhdopqg84qo0" path="res://icon.svg" id="1_rvvd4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4no0"]
+size = Vector2(128, 129)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rvvd4"]
+size = Vector2(731, 123)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_45hb1"]
+size = Vector2(731, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqglm"]
+size = Vector2(1187, 585)
+
+[node name="Infinite" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Player" type="CharacterBody2D" parent="." node_paths=PackedStringArray("floor_2")]
+position = Vector2(89, 646)
+script = ExtResource("1_a4no0")
+floor_2 = NodePath("../StaticBody2D2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("1_rvvd4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_a4no0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(564, 781)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-303, 0)
+scale = Vector2(5.73438, 1)
+texture = ExtResource("1_rvvd4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-303.5, -0.5)
+shape = SubResource("RectangleShape2D_rvvd4")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1453, 779)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-303, 0)
+scale = Vector2(5.73438, 1)
+texture = ExtResource("1_rvvd4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-303.5, -0.5)
+shape = SubResource("RectangleShape2D_rvvd4")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2/Area2D"]
+position = Vector2(-302, -73)
+shape = SubResource("RectangleShape2D_45hb1")
+
+[node name="Pit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pit"]
+position = Vector2(709.5, 1148.5)
+shape = SubResource("RectangleShape2D_fqglm")
+
+[connection signal="body_entered" from="StaticBody2D2/Area2D" to="Player" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Pit" to="Player" method="_on_pit_body_entered"]

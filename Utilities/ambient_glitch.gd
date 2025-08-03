@@ -8,7 +8,6 @@ func _ready():
 	update_glitch_intensity()
 
 func increase_glitch_level():
-	print(glitch_level)
 	glitch_level += .5
 	update_glitch_intensity()
 
@@ -22,7 +21,7 @@ func update_glitch_intensity():
 		print("ShaderMaterial not found!")
 		return
 
-	mat.set_shader_parameter("shake_rate", clamp(0.05 * glitch_level, 0.0, 1.0))
-	mat.set_shader_parameter("shake_power", clamp(0.01 * glitch_level, 0.0, 0.2))
-	mat.set_shader_parameter("shake_color_rate", clamp(0.005 * glitch_level, 0.0, 0.1))
-	mat.set_shader_parameter("shake_speed", clamp(2.0 * glitch_level, 0.0, 50.0))
+	mat.set_shader_parameter("shake_rate", clamp(0.015 * glitch_level, 0.0, 1.0))
+	mat.set_shader_parameter("shake_power", clamp(0.0023 * glitch_level, 0.0, 0.2))
+	mat.set_shader_parameter("shake_color_rate", clamp(0.00125 * glitch_level, 0.0, 0.1))
+	mat.set_shader_parameter("shake_speed", clamp(.5 * glitch_level, 0.0, 50.0))

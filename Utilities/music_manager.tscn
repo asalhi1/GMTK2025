@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt18tbd0cmtox"]
+
+[ext_resource type="Script" uid="uid://dhveh1lecnawo" path="res://Utilities/music_manager.gd" id="1_gppea"]
+[ext_resource type="AudioStream" uid="uid://ba4a4gkg0fww" path="res://Assets/Audio/Music/lvl4.ogg" id="2_vq4dp"]
+[ext_resource type="AudioStream" uid="uid://xnap4v618sdd" path="res://Assets/Audio/Music/lvl1.ogg" id="3_s8phn"]
+[ext_resource type="AudioStream" uid="uid://dlks3g7ket788" path="res://Assets/Audio/Music/lvl2.ogg" id="4_s8phn"]
+
+[node name="MusicManager" type="Node" node_paths=PackedStringArray("audio_player")]
+script = ExtResource("1_gppea")
+audio_player = NodePath("AudioStreamPlayer")
+level_music_streams = {
+"8bit": ExtResource("2_vq4dp"),
+"variant1": ExtResource("3_s8phn"),
+"variant2": ExtResource("4_s8phn")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

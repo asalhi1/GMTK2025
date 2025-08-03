@@ -10,6 +10,7 @@ var ducks_shot := 0
 var crosshair
 
 func _ready():
+	MusicManager.play_music_for_level("8bit")
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	crosshair = crosshair_scene.instantiate()
 	add_child(crosshair)
@@ -36,5 +37,5 @@ func _on_duck_shot():
 	t.tween_property(progress_bar, "value", float(ducks_shot) / total_ducks * 100.0, .5)
 	#progress_bar.value = float(ducks_shot) / total_ducks * 100.0
 	if ducks_shot == total_ducks:
-		TransitionManager.transition_to("res://Levels/endscreen.tscn")
+		TransitionManager.transition_to("res://Levels/infinite.tscn")
 		AmbientGlitch.set_glitch_level(0)

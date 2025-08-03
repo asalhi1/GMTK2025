@@ -13,10 +13,10 @@ func transition_to(scene_path: String):
 	target_scene_path = scene_path
 
 	var mat := transition_glitch.material as ShaderMaterial
-	mat.set_shader_parameter("shake_rate", 0.2)
-	mat.set_shader_parameter("shake_power", 0.03)
-	mat.set_shader_parameter("shake_color_rate", 0.01)
-	mat.set_shader_parameter("shake_speed", 5.0)
+	mat.set_shader_parameter("shake_rate", 0.4)
+	mat.set_shader_parameter("shake_power", 0.06)
+	mat.set_shader_parameter("shake_color_rate", 0.02)
+	mat.set_shader_parameter("shake_speed", 10.0)
 
 	animation_player.play("glitch_out")
 
@@ -31,5 +31,5 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		mat.set_shader_parameter("shake_color_rate", 0)
 		mat.set_shader_parameter("shake_speed", 0)
 	elif anim_name == "glitch_in":
-		AmbientGlitch.increase_glitch_level()
+		# AmbientGlitch.increase_glitch_level()
 		transitioning = false

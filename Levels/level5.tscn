@@ -1,0 +1,112 @@
+[gd_scene load_steps=10 format=3 uid="uid://6xsven461jw6"]
+
+[ext_resource type="Script" uid="uid://c2td1fulbpexw" path="res://Scripts/level_5.gd" id="1_fh8n1"]
+[ext_resource type="Texture2D" uid="uid://cisfc351ycphb" path="res://Art/level 6/level 6 update/Statue 1.png" id="2_b3501"]
+[ext_resource type="Texture2D" uid="uid://y358dphsbhff" path="res://Art/level 6/level 6 update/Background.png" id="2_fj68v"]
+[ext_resource type="Script" uid="uid://cakruym8l5vr8" path="res://Scripts/statue_slot.gd" id="3_b3501"]
+[ext_resource type="Texture2D" uid="uid://dkl64mm6tifc7" path="res://Art/level 6/level 6 update/Statue 2.png" id="4_fj68v"]
+[ext_resource type="Texture2D" uid="uid://7ejabnr0t8y6" path="res://Art/level 6/level 6 update/Statue 3.png" id="5_ggu74"]
+[ext_resource type="Texture2D" uid="uid://cskjdigqvbqno" path="res://Art/level 6/level 6 update/New Project 43 [22FE7E4].png" id="7_ggu74"]
+[ext_resource type="Texture2D" uid="uid://b38bg8lngkxgo" path="res://Art/level 6/level 6 update/bar full [C9776B4].png" id="8_ggu74"]
+[ext_resource type="FontFile" uid="uid://cxwuye8sfm2k8" path="res://Assets/Fonts/TinyUnicode (lvl 4).ttf" id="9_4omtb"]
+
+[node name="Level5" type="Control" node_paths=PackedStringArray("hbox_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fh8n1")
+hbox_container = NodePath("MarginContainer/HBoxContainer")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fj68v")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="StatueSlot1" type="TextureRect" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 0
+texture = ExtResource("2_b3501")
+stretch_mode = 2
+script = ExtResource("3_b3501")
+statue_height = 3
+parent = NodePath("../../..")
+
+[node name="StatueSlot2" type="TextureRect" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 0
+texture = ExtResource("4_fj68v")
+stretch_mode = 2
+script = ExtResource("3_b3501")
+statue_height = 1
+parent = NodePath("../../..")
+
+[node name="StatueSlot3" type="TextureRect" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 0
+texture = ExtResource("5_ggu74")
+stretch_mode = 2
+script = ExtResource("3_b3501")
+statue_height = 2
+parent = NodePath("../../..")
+
+[node name="StatueSlot4" type="TextureRect" parent="MarginContainer/HBoxContainer" node_paths=PackedStringArray("parent")]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 0
+texture = ExtResource("7_ggu74")
+stretch_mode = 2
+script = ExtResource("3_b3501")
+statue_height = 4
+parent = NodePath("../../..")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("8_ggu74")
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -11.5
+offset_right = 166.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_4omtb")
+theme_override_font_sizes/font_size = 28
+text = "Tip: Sometime all we need is a little order... which can sometimes be done by clicking and dragging your mouse."
+horizontal_alignment = 1
