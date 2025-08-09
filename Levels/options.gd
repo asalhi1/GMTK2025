@@ -4,8 +4,8 @@ extends Control
 @export var sfx_slider: Slider
 
 func _ready():
-	music_slider.value = db_to_linear(clamp(MusicManager.audio_player.volume_db, -80.0, 0.0))
-	sfx_slider.value = db_to_linear(clamp(SfxManager.audio_player.volume_db, -80.0, 0.0))
+	music_slider.value = db_to_linear(clamp(MusicManager.audio_player.volume_db, -80.0, -10.0))
+	sfx_slider.value = db_to_linear(clamp(SfxManager.audio_player.volume_db, -80.0, -10.0))
 
 	music_slider.value_changed.connect(_on_music_slider_changed)
 	sfx_slider.value_changed.connect(_on_sfx_slider_changed)

@@ -86,10 +86,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		TransitionManager.start_glitch()
 		body.velocity = Vector2(0, 0)
+		body.set_physics_process(false)
 		body.global_position = start_position
 		floor_2.position.x += 150
 		await get_tree().create_timer(.5).timeout
 		TransitionManager.end_glitch()
+		body.set_physics_process(true)
 
 func _on_pit_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

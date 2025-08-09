@@ -8,10 +8,10 @@ var transitioning := false
 
 func start_glitch():
 	var mat := transition_glitch.material as ShaderMaterial
-	mat.set_shader_parameter("shake_rate", 0.4)
-	mat.set_shader_parameter("shake_power", 0.06)
-	mat.set_shader_parameter("shake_color_rate", 0.02)
-	mat.set_shader_parameter("shake_speed", 10.0)
+	mat.set_shader_parameter("shake_rate", 0.2)
+	mat.set_shader_parameter("shake_power", 0.03)
+	mat.set_shader_parameter("shake_color_rate", 0.01)
+	mat.set_shader_parameter("shake_speed", 5.0)
 
 	animation_player.play("glitch_out")
 	SfxManager.play_sfx("glitch")

@@ -15,20 +15,26 @@ func get_drag_data(position):
 		"source": self
 	}
 
-	# Create drag preview
-	drag_preview = TextureRect.new()
-	drag_preview.texture = texture
-	drag_preview.expand = true
-	drag_preview.stretch_mode = STRETCH_KEEP_ASPECT_CENTERED
-	drag_preview.modulate = Color(1, 1, 1, 0.8) # slight transparency
+	# Create drag preview that sticks to cursor
+	#drag_preview = TextureRect.new()
+	#drag_preview.texture = texture
+	#drag_preview.stretch_mode = STRETCH_KEEP_ASPECT_CENTERED
+	#drag_preview.expand = true
+	#drag_preview.size = size # match original size
+	#drag_preview.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	#drag_preview.modulate = Color(1, 1, 1, 0.8) # slight transparency
 
-	set_drag_preview(drag_preview)
-
-	# Visual feedback on original
-	modulate = Color(1, 1, 1, 0.3)  # fade the original
-
+	#set_drag_preview(drag_preview)
+	#drag_preview.set_position(-drag_preview.size)
+	var preview = duplicate()  # Create a copy of this node for the preview
+	preview.modulate.a = 0.5   # Make it semi-transparent
+	
+	var c = Control.new()
+	c.add_child(preview)
+	preview.position = Vector2.ZERO - position
+	
+	set_drag_preview(c)
 	return drag_data
-
 
 func can_drop_data(position, data):
 	return typeof(data) == TYPE_DICTIONARY and data.has("texture") and data.has("source")

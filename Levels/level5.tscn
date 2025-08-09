@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6xsven461jw6"]
+[gd_scene load_steps=12 format=3 uid="uid://6xsven461jw6"]
 
 [ext_resource type="Script" uid="uid://c2td1fulbpexw" path="res://Scripts/level_5.gd" id="1_fh8n1"]
 [ext_resource type="Texture2D" uid="uid://r06dipis5fj5" path="res://Art/level 6/level 6 update/Statue 1.png" id="2_b3501"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b4b3h22thy2so" path="res://Art/level 6/level 6 update/New Project 43 [22FE7E4].png" id="7_ggu74"]
 [ext_resource type="Texture2D" uid="uid://c5vl14lnx7hgh" path="res://Art/level 6/level 6 update/bar full [C9776B4].png" id="8_ggu74"]
 [ext_resource type="FontFile" uid="uid://cxwuye8sfm2k8" path="res://Assets/Fonts/TinyUnicode (lvl 4).ttf" id="9_4omtb"]
+[ext_resource type="Script" uid="uid://k2f80lx6lfnm" path="res://Scripts/level5label.gd" id="11_h1e6x"]
 
 [node name="Level5" type="Control" node_paths=PackedStringArray("hbox_container")]
 layout_mode = 3
@@ -126,5 +127,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_4omtb")
 theme_override_font_sizes/font_size = 32
-text = "Tip: Some figures cast longer shadows than others.."
+text = "Tip: Some figures stand taller than others..."
 horizontal_alignment = 1
+script = ExtResource("11_h1e6x")
